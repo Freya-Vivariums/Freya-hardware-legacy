@@ -1,0 +1,19 @@
+{
+  "name": "freya-hardware-legacy",
+  "version": "0.0.0",
+  "description": "Legacy hardware driver for Freya Vivarium Control System",
+  "author": "Sanne 'SpuQ' Santens",
+  "license": "GPL-3.0-only",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SpuQ/Freya-hardware-legacy.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SpuQ/Freya-hardware-legacy/issues"
+  },
+  "homepage": "https://github.com/SpuQ/Freya-hardware-legacy#readme"
+}
