@@ -9,12 +9,14 @@ const dbus = require('dbus-native');
 
 /* System DBus client */
 const systemBus = dbus.systemBus();
+let freyaCore:any|null;
 
 // Listen for signals from Freya Core
 systemBus.getService('io.freya.Core').getInterface( '/io/freya/Core', 
                                                     'io.freya.Core',
                                                     (err:any, iface:any)=>{
                                                         if(err) return console.log(err);
+                                                        freyaCore = iface;
                                                         iface.on('updateActuator', setActuator );
                                                     }
 );
@@ -22,20 +24,13 @@ systemBus.getService('io.freya.Core').getInterface( '/io/freya/Core',
 
 /* Q-com based hardware devices */
 const powerSwitch = new Qdevice("FreyaPowerswitch_1");		// Freya's Powerswitch Module, on address 1
-const sensor = new Qdevice("FreyaSensor_1");		        // Freya's Sensor Module, on address 1
+const sensor = new Qdevice("freyaSensor_1");		        // Freya's Sensor Module, on address 1
 
 // When data is received from the physical sensor,
 // update the data to the Freya Core
 sensor.on('data', function( data:any ){
-	if( data.signal == "humidity" ){
-
-	}
-	else if( data.signal == "lighting" ){
-
-	}
-	else if (data.signal == "temperature" ){
-
-	}
+    console.log(data);
+    if(freyaCore) freyaCore.setMeasurement(JSON.stringify({variable:data.signal, value:parseFloat(data.argument)}))
 });
 
 // When actuator data is received from the
