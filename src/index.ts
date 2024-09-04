@@ -7,20 +7,52 @@
 const Qdevice = require('qdevice');
 const dbus = require('dbus-native');
 
+const SERVICE_NAME="io.freya.Core";
+const SIGNAL_NAME="updateActuator";
+
 /* System DBus client */
 const systemBus = dbus.systemBus();
 let freyaCore:any|null;
 
-// Listen for signals from Freya Core
-systemBus.getService('io.freya.Core').getInterface( '/io/freya/Core', 
-                                                    'io.freya.Core',
-                                                    (err:any, iface:any)=>{
-                                                        if(err) return console.log(err);
-                                                        freyaCore = iface;
-                                                        iface.on('updateActuator', setActuator );
-                                                    }
-);
+function subscribeToFreyaCore(){
+    // Listen for signals from Freya Core
+    systemBus.getService('io.freya.Core').getInterface( '/io/freya/Core', 
+                                                        'io.freya.Core',
+                                                        (err:any, iface:any)=>{
+                                                            if(err) return console.log(err);
+                                                            freyaCore = iface;
+                                                            freyaCore.on(SIGNAL_NAME, setActuator );
+                                                        }
+    );
+}
 
+// initial subscription
+subscribeToFreyaCore();
+
+// Function to handle Freya Core service restart
+// by listening to NameOwnerChanged signal
+function monitorService() {
+    systemBus.getService('org.freedesktop.DBus').getInterface(
+        '/org/freedesktop/DBus',
+        'org.freedesktop.DBus',
+        (err:any, iface:any) => {
+            if (err) return console.error('Failed to get DBus interface:', err);
+            iface.on('NameOwnerChanged', (name:string, oldOwner:string, newOwner:string) => {
+                if (name === SERVICE_NAME) {
+                    if (oldOwner && !newOwner) {
+                        console.log('Service has stopped. Removing event listeners from interface');
+                        if(freyaCore) freyaCore.off(SIGNAL_NAME);
+                    } else if (!oldOwner && newOwner) {
+                        console.log('Service has started.');
+                        subscribeToFreyaCore(); // Re-subscribe to signals
+                    }
+                }
+            });
+        }
+    );
+}
+
+monitorService();
 
 /* Q-com based hardware devices */
 const powerSwitch = new Qdevice("FreyaPowerswitch_1");		// Freya's Powerswitch Module, on address 1
