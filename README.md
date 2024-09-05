@@ -2,15 +2,17 @@
 
 <img src="documentation/legacy_hardware.png" align="right" width="40%"/>
 
-The **Freya Vivarium Control System Legacy Hardware** consists of microcontroller-based modules, connecting to the system through USB.
+The **Freya Vivarium Control System Legacy Hardware** consists of microcontroller-based modules that connect to the system via USB.
 
 #### Freya Sensor Module
-The sensor module has sensors for measuring temperature (°C), relative light intensity (%) and relative humidity (%)
+The sensor module includes sensors for measuring temperature (°C), relative light intensity (%) and relative humidity (%)
 
 #### Freya Powerswitch Module
-The powerswitch module has 4 individually controlable power outputs, allowing to interface several actuators.
+The powerswitch module has four individually controllable power outputs, allowing it to interface with several actuators.
 
 <br clear="right"/>
+
+*These modules played an important role in the development process of Freya, but official support for this hardware configuration will end soon.
 
 ## Installation
 When installing the Freya Core application, the installer prompts for the Hardware Interface option. So there's no need to install this manually. But should you want to install this component manually, it goes like this:
