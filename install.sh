@@ -9,7 +9,7 @@
 ##
 
 APPNAME=Freya
-APPCOMP=Core
+APPCOMP=HardwareInterfaceUSB
 REPONAME=Freya-hardware-legacy
 REPOOWNER=Freya-Vivariums
 APPDIR=/opt/${APPNAME}/${APPCOMP}

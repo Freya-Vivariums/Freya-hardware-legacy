@@ -1,5 +1,5 @@
 [Unit]
-Description=Freya Core service
+Description=Freya Legacy HardwareInterfaceUSB service
 Documentation=https://github.com/Freya-Vivariums
 After=network.target
 
