@@ -58,6 +58,7 @@ sshpass -p ${PASSWORD} scp -r ./src \
                                 ./tsconfig.json \
                                 ./webpack.config.js \
                                 ./io.freya.HardwareInterfaceUSB.service \
+                                ./uninstall.sh \
                                 ${USER}@${HOST}:temp/
 
 # Install the application on remote device
