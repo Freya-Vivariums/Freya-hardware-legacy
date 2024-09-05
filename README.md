@@ -2,8 +2,16 @@
 
 <img src="documentation/legacy_hardware.png" align="right" width="40%"/>
 
-The **Freya Vivarium Control System Legacy Hardware** is ... 
+The **Freya Vivarium Control System Legacy Hardware** consists of microcontroller-based modules, connecting to the system through USB.
 
+#### Freya Sensor Module
+The sensor module allows Freya to sense its environment through several sensors.
+- Temperature sensor (°C)
+- Relative light intensity sensor (%)
+- Relative humidity sensor (%)
+
+#### Freya Powerswitch Module
+The powerswitch module has 4 individually controlable power outputs, allowing to interface several actuators.
 
 <br clear="right"/>
 
