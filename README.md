@@ -1,4 +1,4 @@
-![Edgeberry banner](documentation/Freya_banner.png)
+![Edgeberry banner](https://raw.githubusercontent.com/Freya-Vivariums/.github/main/documentation/Freya_banner.png)
 
 <img src="documentation/legacy_hardware.png" align="right" width="40%"/>
 
