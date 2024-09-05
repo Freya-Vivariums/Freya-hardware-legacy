@@ -13,7 +13,7 @@ The powerswitch module has four individually controllable power outputs, allowin
 <br clear="right"/>
 
 >[!important]
->These modules played an important role in the development and beta testing process of Freya. However, this hardware configuration is no longer supported and therefor not recommended.
+>These modules played an important role in the development and beta testing process of Freya. However, this hardware configuration is no longer supported and thus not recommended.
 
 ## Installation
 The Freya Core installer will prompt you to select the hardware interface, so manual installation is not required. Should you prefer to install this component manually, follow these steps:
